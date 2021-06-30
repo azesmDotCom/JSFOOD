@@ -94,6 +94,7 @@
 /***/ (function(module, exports) {
 
 window.addEventListener('DOMContentLoaded', function () {
+  //__________________________Tabs_________________________
   const tabs = document.querySelectorAll('.tabheader__item'),
         tabsContent = document.querySelectorAll('.tabcontent'),
         tabsParent = document.querySelector('.tabheader__items'); //скрытие табов
@@ -131,7 +132,7 @@ window.addEventListener('DOMContentLoaded', function () {
         }
       });
     }
-  });
+  }); //__________________________________Timer________________________
 });
 
 /***/ })
