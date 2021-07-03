@@ -123,26 +123,28 @@ window.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-
-    modalCloseBtn.addEventListener('click', () => {
+    function closeModal() {
         modal.classList.add('hide');
         modal.classList.remove('show');
         //второй вариант 9 00
         //modal.classList.toggle('show');
         document.body.style.overflow = '';
-    });
+    }
+
+    modalCloseBtn.addEventListener('click', closeModal);
 
     //закрытие модального окна кликом на подложку или escape
     modal.addEventListener('click', (e) => {
         if (e.target === modal) {
-            modal.classList.add('hide');
-            modal.classList.remove('show');
-            //второй вариант 9 00
-            //modal.classList.toggle('show');
-            document.body.style.overflow = '';
+            closeModal();
         }
     });
 
+    document.addEventListener('keydown', (e) => {
+        if(e.code === "Escape" && modal.classList.contains('show')) {
+            closeModal();
+        }
 
+    });
 
 });
