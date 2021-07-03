@@ -184,16 +184,18 @@ window.addEventListener('DOMContentLoaded', function () {
 
   setClock('.timer', deadline); //Modal
 
-  const modalTrigger = document.querySelector('[data-modal]'),
+  const modalTrigger = document.querySelectorAll('[data-modal]'),
         modal = document.querySelector('.modal'),
         modalCloseBtn = document.querySelector('[data-close]');
-  modalTrigger.addEventListener('click', () => {
-    modal.classList.add('show');
-    modal.classList.remove('hide'); //второй вариант 9 00
-    //modal.classList.toggle('show');
-    //останавливает прокрутку экрана 
+  modalTrigger.forEach(btn => {
+    btn.addEventListener('click', () => {
+      modal.classList.add('show');
+      modal.classList.remove('hide'); //второй вариант 9 00
+      //modal.classList.toggle('show');
+      //останавливает прокрутку экрана 
 
-    document.body.style.overflow = 'hidden';
+      document.body.style.overflow = 'hidden';
+    });
   });
   modalCloseBtn.addEventListener('click', () => {
     modal.classList.add('hide');
@@ -201,6 +203,16 @@ window.addEventListener('DOMContentLoaded', function () {
     //modal.classList.toggle('show');
 
     document.body.style.overflow = '';
+  }); //закрытие модального окна кликом на подложку или escape
+
+  modal.addEventListener('click', e => {
+    if (e.target === modal) {
+      modal.classList.add('hide');
+      modal.classList.remove('show'); //второй вариант 9 00
+      //modal.classList.toggle('show');
+
+      document.body.style.overflow = '';
+    }
   });
 });
 
