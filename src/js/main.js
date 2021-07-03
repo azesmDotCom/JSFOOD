@@ -115,11 +115,18 @@ window.addEventListener('DOMContentLoaded', function () {
     modalTrigger.addEventListener('click', () => {
         modal.classList.add('show');
         modal.classList.remove('hide');
+        //второй вариант 9 00
+        //modal.classList.toggle('show');
+        //останавливает прокрутку экрана 
+        document.body.style.overflow = 'hidden'; 
     });
 
     modalCloseBtn.addEventListener('click', () => {
         modal.classList.add('hide');
         modal.classList.remove('show');
+        //второй вариант 9 00
+        //modal.classList.toggle('show');
+        document.body.style.overflow = '';
     });
 
 
