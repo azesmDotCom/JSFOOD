@@ -452,6 +452,9 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: flex-end; }
+  .footer .pepper img {
+    width: 30%;
+    height: 30%; }
   .footer .subtitle {
     font-size: 20px; }
   .footer .link {
