@@ -153,15 +153,49 @@ window.addEventListener('DOMContentLoaded', function () {
 
     });
 
-    const modalTimerId = setTimeout(openModal, 5000);
+    //const modalTimerId = setTimeout(openModal, 5000); показывает окно через 5 секунд
 
     function showModalByScroll() {
-                if(window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
+        if (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight) {
             openModal();
             window.removeEventListener('scroll', showModalByScroll);
         }
     }
 
     window.addEventListener('scroll', showModalByScroll);
+
+    //Используем классы для карточек
+
+    class MenuCard {
+        constructor(src, alt, title, descr, price) {
+            this.src = src;
+            this.alt = alt;
+            this.title = title;
+            this.descr = descr;
+            this.price = price;
+            this.transfer = 77;
+            this.changeToRUB();
+        }
+
+        changeToRUB() {
+            this.price = this.price * this.transfer;
+        }
+
+        render() {
+            const element = document.createElement('div');
+            element.innerHTML = `
+            < div class = "menu__item" >
+                <img src = "img/tabs/vegy.jpg" alt = "vegy" >
+                <h3 class = "menu__item-subtitle" > Меню "Фитнес" < /h3>
+                <div class = "menu__item-descr" > Меню "Фитнес" - это новый подход к приготовлению блюд: больше свежих овощей и фруктов.Продукт активных и здоровых людей.Это абсолютно новый продукт с оптимальной ценой и высоким качеством!</div>
+                <div class = "menu__item-divider"></div>
+                <div class = "menu__item-price">
+                    <div class = "menu__item-cost" > Цена: < /div>
+                    <div class = "menu__item-total" > < span > 2700 < /span> руб./день< /div>
+                </div>
+                </div>
+            `;
+        }
+    }
 
 });
